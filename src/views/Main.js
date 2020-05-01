@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import "../assets/scss/homepage.scss";
 import pizzaBg from "../assets/img/pizza_bg.jpg";
-import Companylogo from "../assets/img/logo.jpg";
 import {FiGrid, FiList} from "react-icons/all";
 import ProductList from "../components/ProductList";
 import Cart from "../components/Cart";
@@ -9,7 +8,6 @@ import productData from "../static-data/product.json";
 import {Button, Form, Modal} from "react-bootstrap";
 import {ToastsContainer, ToastsStore} from 'react-toasts';
 import axios from "axios";
-import Googleplace from "../views/GooglePlaces";
 
 class Main extends Component {
     constructor(props) {
@@ -34,7 +32,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost/pizzadelivery/api/get-pizzas")
+        axios.get("https://parallaxlogicit.com/pi/api/get-pizzas")
             .then(res => {
                 this.setState({productList: res.data.response.pizzas});
             }).catch(e => this.setState({error: true}));
@@ -130,7 +128,7 @@ class Main extends Component {
             customerPhone: this.state.customerPhone,
             customerAddress: this.state.customerAddress,
         };
-        axios.post("http://localhost/pizzadelivery/api/store-order", data)
+        axios.post("https://parallaxlogicit.com/pi/api/store-order", data)
             .then(response => {
                 if (response.data.meta.status === 200) {
                     this.setState({
@@ -214,14 +212,9 @@ class Main extends Component {
                 </Modal>
 
                 <div style={{backgroundImage: `url(${pizzaBg})`}} className={"full-page-background"}>
-                    <div className="overlay dark">
+                    <div className="overlay dark" style={{marginTop: 58}}>
                         <div className="home-page-header">
-                            <div className="logo">
-                          <span className="text">
-                            <img src={Companylogo} alt=""/>
-                          </span>
-                            </div>
-                            <h2 className="main-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                            <h2 className="main-title" >Pizza Order and Delivery System.</h2>
                         </div>
 
                         <div className="menu-box">

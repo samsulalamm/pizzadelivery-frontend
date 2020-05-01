@@ -18,11 +18,6 @@ class Product extends Component {
         let index = this.state.cartData.findIndex(item => item.id === id)
         this.state.cartData.splice(index, 1, newData);
         this.setState({setSelectedAttr: value});
-        // if (!this.state.cartData.some(item => id === item.id)) {
-        //     let newData = {id: id, name: name, size: size, price: price};
-        //     await this.setState({cartData: [...this.state.cartData, newData]});
-        //     console.log(this.state.cartData);
-        // }
     }
 
     render() {

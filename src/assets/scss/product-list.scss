@@ -1,0 +1,23 @@
+@import "inc/variables";
+
+.product-list {
+  display: flex;
+  margin: 0 -15px;
+  flex-wrap: wrap;
+
+  .product-item {
+    width: 33.3333333333%;
+    flex: 0 0 33.3333333333%;
+    padding: 0 15px;
+  }
+
+  &.list-view {
+    margin: 0;
+
+    .product-item {
+      padding: 0;
+      width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+}

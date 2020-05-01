@@ -1,0 +1,154 @@
+//Ratio
+.ratio {
+  display: block;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba($defaultColor, .1);
+
+  &.bg-cover {
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+  }
+
+  &.bg-contain {
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+  }
+
+  .ratio-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    &.content-contain {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &.ratio-1-1 {
+    padding-bottom: 100%;
+  }
+
+  &.ratio-3-2 {
+    padding-bottom: 66.666666%;
+  }
+
+  &.ratio-4-3 {
+    padding-bottom: 75%;
+  }
+
+  &.ratio-16-9 {
+    padding-bottom: 56.25%;
+  }
+
+  &.ratio-21-9 {
+    padding-bottom: 42.8571%;
+  }
+}
+
+.attr-list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+
+  li {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  label {
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    input {
+      display: none;
+    }
+
+    .text {
+      display: block;
+      line-height: 1.2;
+      border: 1px solid $defaultLighterColor;
+      padding: 4px 15px;
+      background-color: #ffffff;
+      border-radius: 3px;
+      font-weight: bold;
+      text-align: center;
+
+      span, small {
+        display: block;
+      }
+
+      span {
+        font-size: 1.2rem;
+      }
+    }
+
+    input:checked ~ .text {
+      border-color: $secondaryColor;
+      color: $defaultColor;
+      background-color: $secondaryColor;
+    }
+  }
+}
+
+.btn-cart {
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  border: 0 none;
+  background-color: #ffffff;
+  padding: 0;
+  text-align: center;
+  border-radius: 3px;
+
+  .icon,
+  .item-qnt,
+  .item-price {
+    display: block;
+  }
+
+  .item-qnt,
+  .item-price {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .icon {
+    font-size: 2rem;
+    color: $secondaryColor;
+  }
+
+  .upper-part {
+    padding: 5px 10px;
+    display: block;
+  }
+
+  .item-price {
+    background-color: $primaryColor;
+    padding: 5px 10px;
+    color: #ffffff;
+    border-radius: 0 0 3px 3px;
+  }
+}

@@ -1,0 +1,32 @@
+// Fonts
+$defaultFont: 'PT Sans', sans-serif;
+
+// Colors
+$defaultColor: #424242;
+$defaultDarkColor: #030303;
+$defaultLightColor: #9f9f9f;
+$defaultLighterColor: #dfdfdf;
+$borderColor: lighten($defaultColor, 60%);
+
+//$primaryColor: #5E6CC5;
+//$primaryDarkColor: #414b89;
+//$primaryLightColor: #9ea6dc;
+//$primaryLighterColor: #eef0f9;
+
+$primaryColor: #74A241;
+$primaryDarkColor: #51772E;
+$primaryLightColor: #D5F69D;
+$primaryLighterColor: #74A241;
+
+$secondaryColor: #F5BB00;
+$secondaryDarkColor: #BB8300;
+$secondaryLightColor: #FEF04D;
+$secondaryLighterColor: #fffdf5;
+
+$purpleColor: #8c52ff;
+$lightGreenColor: #B1D328;
+$blueColor: #38b6ff;
+$blueLightColor: #E1F4FF;
+$yellowColor: #FFDE59;
+$orangeColor: #ff914d;
+$orangeLightColor: #FFEFE4;

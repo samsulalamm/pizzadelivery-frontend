@@ -1,0 +1,101 @@
+@import "inc/variables";
+
+.full-page-background {
+  height: 100vh;
+  overflow-x: hidden;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .overlay {
+    min-height: 100vh;
+    padding: 50px 0;
+
+    &.dark {
+      background-color: rgba($defaultDarkColor, .6);
+    }
+  }
+
+  .home-page-header {
+    margin-bottom: 50px;
+    text-align: center;
+
+    .logo {
+      height: 50px;
+      font-size: 1.65rem;
+      color: #ffffff;
+      margin-bottom: 50px;
+
+      img {
+        height: 50px;
+        width: auto;
+      }
+
+      .light {
+        font-weight: normal;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      .text {
+        display: inline-block;
+        height: 50px;
+        border: 1px solid #ffffff;
+        line-height: 44px;
+        padding: 0 20px;
+      }
+    }
+
+    .main-title {
+      color: #ffffff;
+      font-weight: normal;
+      text-transform: capitalize;
+      max-width: 678px;
+      margin: 0 auto;
+      line-height: 44px;
+    }
+  }
+}
+
+.menu-box {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  background-color: #ffffff;
+
+  .box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid $defaultLighterColor;
+    padding: 0 30px;
+  }
+
+  .box-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .view-actions {
+    .action {
+      cursor: pointer;
+      color: $defaultLightColor;
+
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+
+      &.active {
+        color: $primaryColor;
+      }
+    }
+  }
+
+  .box-body {
+    padding: 30px 30px 0;
+  }
+}

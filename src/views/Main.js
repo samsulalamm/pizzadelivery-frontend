@@ -8,6 +8,7 @@ import productData from "../static-data/product.json";
 import {Button, Form, Modal} from "react-bootstrap";
 import {ToastsContainer, ToastsStore} from 'react-toasts';
 import axios from "axios";
+import Header from "../layouts/Header";
 
 class Main extends Component {
     constructor(props) {
@@ -28,6 +29,8 @@ class Main extends Component {
             customerName: '',
             customerPhone: '',
             customerAddress: '',
+            showOrderhistory: false,
+            orderHistory: []
         }
     }
 
@@ -37,7 +40,18 @@ class Main extends Component {
                 this.setState({productList: res.data.response.pizzas});
             }).catch(e => this.setState({error: true}));
 
+        axios.get("https://parallaxlogicit.com/pi/api/get-order-history")
+            .then(res => {
+                this.setState({orderHistory: res.data.response.orders});
+            }).catch(e => this.setState({error: true}));
     }
+
+    handleCloseHistoryoutModal = () => {
+        this.setState({showOrderhistoryModal: false});
+    };
+    handleOrderHistory = () => {
+        this.setState({showOrderhistoryModal: true});
+    };
 
     handleViewGrid = () => {
         this.setState({setIsListView: false, isListView: false});
@@ -147,8 +161,64 @@ class Main extends Component {
     };
 
     render() {
+        let orderExist = this.state.orderHistory.length < 1 ? <h5 className="text-center">You don't have any order yet. Please make an order.</h5> : "";
         return (
             <div>
+                <Header showOrderhistory={this.handleOrderHistory}/>
+
+                <Modal size="lg" show={this.state.showOrderhistoryModal} onHide={this.handleCloseHistoryoutModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title className="text-center"> Order History </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {this.state.orderHistory.length > 0 &&
+                        <table className="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Delivery Address</th>
+                                <th>Customer Information</th>
+                                <th>Order Details</th>
+                                <th className="text-right">Total Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {this.state.orderHistory.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{index + 1}.</td>
+                                        <td width="250">{item.delivery_address}</td>
+                                        <td width="250">
+                                            Name: {item.customer_name}<br/>
+                                            Phone: {item.customer_phone}<br/>
+                                            Address: {item.customer_address}
+                                        </td>
+                                        <td>
+                                            {item.order_details.map((item, index) => {
+                                                return (
+                                                    <div>
+                                                        Item Name: {item.name}
+                                                        Qty : {item.qty}
+                                                        Attribute : {item.attribute}
+                                                        Unit Price : {item.unit_price}
+                                                        Total Price: {item.total_price}
+                                                        <hr/>
+                                                    </div>
+                                                )
+                                            })}
+                                        </td>
+                                        <td className="text-right">$ {item.total_price}</td>
+                                    </tr>
+                                )
+                            })}
+                            </tbody>
+                        </table>
+                        }
+
+                        {orderExist}
+
+                    </Modal.Body>
+                </Modal>
 
                 <Modal show={this.state.handleProceedToCheckoutModal} onHide={this.handleCloseCheckoutModal}>
                     <Modal.Header closeButton>
@@ -214,7 +284,7 @@ class Main extends Component {
                 <div style={{backgroundImage: `url(${pizzaBg})`}} className={"full-page-background"}>
                     <div className="overlay dark" style={{marginTop: 58}}>
                         <div className="home-page-header">
-                            <h2 className="main-title" >Pizza Order and Delivery System.</h2>
+                            <h2 className="main-title">Pizza Order and Delivery System.</h2>
                         </div>
 
                         <div className="menu-box">

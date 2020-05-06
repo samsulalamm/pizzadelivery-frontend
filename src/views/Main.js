@@ -39,17 +39,16 @@ class Main extends Component {
             .then(res => {
                 this.setState({productList: res.data.response.pizzas});
             }).catch(e => this.setState({error: true}));
-
-        axios.get("https://parallaxlogicit.com/pi/api/get-order-history")
-            .then(res => {
-                this.setState({orderHistory: res.data.response.orders});
-            }).catch(e => this.setState({error: true}));
     }
 
     handleCloseHistoryoutModal = () => {
         this.setState({showOrderhistoryModal: false});
     };
     handleOrderHistory = () => {
+        axios.get("https://parallaxlogicit.com/pi/api/get-order-history")
+            .then(res => {
+                this.setState({orderHistory: res.data.response.orders});
+            }).catch(e => this.setState({error: true}));
         this.setState({showOrderhistoryModal: true});
     };
 

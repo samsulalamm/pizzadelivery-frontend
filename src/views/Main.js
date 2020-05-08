@@ -8,6 +8,7 @@ import productData from "../static-data/product.json";
 import {Button, Form, Modal} from "react-bootstrap";
 import {ToastsContainer, ToastsStore} from 'react-toasts';
 import axios from "axios";
+import config from "../config/config";
 import Header from "../layouts/Header";
 
 class Main extends Component {
@@ -35,7 +36,8 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://parallaxlogicit.com/pi/api/get-pizzas")
+
+        axios.get(`${config.API_URL}get-pizzas`)
             .then(res => {
                 this.setState({productList: res.data.response.pizzas});
             }).catch(e => this.setState({error: true}));
@@ -45,7 +47,7 @@ class Main extends Component {
         this.setState({showOrderhistoryModal: false});
     };
     handleOrderHistory = () => {
-        axios.get("https://parallaxlogicit.com/pi/api/get-order-history")
+        axios.get(`${config.API_URL}get-order-history`)
             .then(res => {
                 this.setState({orderHistory: res.data.response.orders});
             }).catch(e => this.setState({error: true}));

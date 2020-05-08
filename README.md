@@ -6,7 +6,7 @@ In the project directory, to install the dependecy, you can run:
 
 ### `npm install`
 
-To confiure the backend please change the API_URL in the config.js file inside the config folder the application, run the command
+To confiure the backend please change the API_URL in the config.js file inside the config folder the application.
 
 To start the application, run the command
 
